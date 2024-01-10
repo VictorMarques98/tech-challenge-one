@@ -66,7 +66,7 @@ html {
   color: var(--third-color);
 }
 
-.locationForm > button {
+.customButton {
   background-color: var(--primary-color);
   border-radius: 8px;
   color: var(--secondary-color);
@@ -74,6 +74,11 @@ html {
   padding: 10px 12px;
   font-weight: 700;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.customButton:hover {
+  background-color: #0237a2;
 }
 
 .homeImage {

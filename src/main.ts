@@ -8,6 +8,7 @@ const inputScreen = document.getElementById('inputScreen');
 const loader = document.getElementById('loader');
 
 const handleLocationSubmit = async (e: Event) => {
+    
     e.preventDefault();
     const location = locationInput?.value ?? '';
 

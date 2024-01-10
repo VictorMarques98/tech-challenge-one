@@ -5,6 +5,20 @@ function formatDate(): string {
   return date.toLocaleDateString('en-US');
 }
 
+function goBack(): void {
+  const weatherInfo = document.getElementById('weatherInfo');
+  const inputScreen = document.getElementById('inputScreen');
+
+  if (!weatherInfo || !inputScreen) {
+    console.error('Element with id "weatherInfo" not found');
+    return;
+  }
+
+  // Hide the weather information
+  weatherInfo.style.display = "none";
+  inputScreen.style.display = "flex";
+}
+
 function createWeatherHTML(data: WeatherReport): string {
   const { name, sys, main, coord, wind, visibility } = data;
 
@@ -21,7 +35,7 @@ function createWeatherHTML(data: WeatherReport): string {
         <h3>Feels like ${main.feels_like}º</h3>
       </div>
       <div class="image">
-        <img src="./assets/3D Ico_12.png" alt />
+        <img src="./src/assets/3D Ico_12.png" alt />
       </div>
     </div>
     <div class="divider"></div>
@@ -48,7 +62,7 @@ function createWeatherHTML(data: WeatherReport): string {
       <div class="content">
         <h3>Latitude</h3>
         <div class="image">
-          <img src="./assets/3D Ico_01.png" alt />
+          <img src="./src/assets/Ico_01.png" alt />
         </div>
         <div>
           <h3>${coord.lat}</h3>
@@ -57,7 +71,7 @@ function createWeatherHTML(data: WeatherReport): string {
       <div class="content">
         <h3>Longitude</h3>
         <div class="image">
-          <img src="./assets/3D Ico_02.png" alt />
+          <img src="./src/assets/3D Ico_02.png" alt />
         </div>
         <div>
           <h3>${coord.lon}</h3>
@@ -66,7 +80,7 @@ function createWeatherHTML(data: WeatherReport): string {
       <div class="content">
         <h3>Wind Speed</h3>
         <div class="image">
-          <img src="./assets/3D Ico_03.png" alt />
+          <img src="./src/assets/3D Ico_03.png" alt />
         </div>
         <div>
           <h3>${wind.speed}</h3>
@@ -75,12 +89,13 @@ function createWeatherHTML(data: WeatherReport): string {
       <div class="content">
         <h3>Visibility</h3>
         <div class="image">
-          <img src="./assets/3D Ico_04.png" alt />
+          <img src="./src/assets/3D Ico_04.png" alt />
         </div>
         <div>
           <h3>${visibility}</h3>
         </div>
       </div>
+      <button id="goback" class="customButton">Go Back</button>
     </div>
   `;
 }
@@ -95,4 +110,7 @@ export function updateWeatherInfo(data: WeatherReport): void {
 
   weatherInfo.style.display = "block";
   weatherInfo.innerHTML = createWeatherHTML(data);
+
+  document.getElementById('goback')?.addEventListener('click', goBack);
+
 }
