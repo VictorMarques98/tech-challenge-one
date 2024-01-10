@@ -1,21 +1,47 @@
-import { getWeather } from './api.ts';
-import { updateWeatherInfo } from './dom.ts';
+import { getWeather } from './api/getWeather.ts';
+import { updateWeatherInfo } from './dom/createWeatherHTML.ts';
+import { APIKEY } from './constants/config.ts';
 
-document.getElementById('getWeather').addEventListener('click', async function() {
-    const location = (document.getElementById('location') as HTMLInputElement).value;
+const submitLocationInput = document.getElementById('submitLocationInput') as HTMLButtonElement;
+const locationInput = document.getElementById('locationInput') as HTMLInputElement;
+const inputScreen = document.getElementById('inputScreen');
+const loader = document.getElementById('loader');
+
+const handleLocationSubmit = async (e: Event) => {
+    e.preventDefault();
+    const location = locationInput?.value ?? '';
 
     if (!location) {
         alert('Please enter a location');
         return;
     }
 
-    const apiKey = 'a1fd1fd1e92b30997dc16651caf768d9';
+    if (inputScreen) {
+        inputScreen.style.display = "none";
+    }
+
+    if (loader) {
+        loader.style.display = "flex";
+    }
 
     try {
-        const data = await getWeather(location, apiKey);
+        const data = await getWeather(location, APIKEY);
         updateWeatherInfo(data);
+
+        if (loader) {
+            loader.style.display = "none";
+        }
+
     } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while fetching the weather data. Please try again later.');
+        if (inputScreen) {
+            inputScreen.style.display = "flex";
+        }
+
+        if (loader) {
+            loader.style.display = "none";
+        }
+        alert(error);
     }
-});
+};
+
+submitLocationInput?.addEventListener('click', handleLocationSubmit);

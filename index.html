@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Meta information -->
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Open Weather App</title>
+    <title>Challenge 2</title>
+
+    <!-- Preconnects and Stylesheets -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/main.css" />
   </head>
+
   <body>
-    <div id="app">
-      <input type="text" id="location" placeholder="Enter a location" />
-      <button id="getWeather">Get Weather</button>
-      <div id="weatherInfo"></div>
-    </div>
-    <script type="module" src="/src/main.ts"></script>
+    <main id="root">
+      <!-- Screen 1: Input Screen -->
+      <section id="inputScreen" class="inputScreen">
+        <figure class="homeImage">
+          <img src="./src/assets/Ico_01.png" alt="Home Image" />
+        </figure>
+        <h1>Enter Location Desired:</h1>
+        <form class="locationForm">
+          <input
+            type="text"
+            id="locationInput"
+            placeholder="Enter a location"
+            required
+          />
+          <button type="submit" id="submitLocationInput">Search</button>
+        </form>
+      </section>
+
+      <!-- Screen 2: Result Screen -->
+      <section id="weatherInfo" class="weatherInfo"></section>
+
+      <!-- Screen 3: Loader -->
+      <section class="loaderScreen" id="loader">
+        <h1>Loading...</h1>
+        <div class="loader"></div>
+      </section>
+    </main>
   </body>
+  <script type="module" src="/src/main.ts"></script>
 </html>
