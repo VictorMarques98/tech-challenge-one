@@ -49,3 +49,13 @@ app
 ## 🎨 Styling Approach
 
 In the development and styling of the components, I chose to use Vanilla CSS
+
+# Next steps
+
+If this app would need to be incremented, some changes would be required:
+
+- Adding a library (react) to create a SPA and add more funcionalities;
+- Structure the project according features, in this current case is not necessary because is a small project;
+- Add a sass or taiwind for CSS, to maintain a theme;
+- Create tests using jest or cypress.js to e2e tests;
+- Etc
