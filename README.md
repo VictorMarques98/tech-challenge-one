@@ -24,7 +24,7 @@ Then, open [http://localhost:3000](http://localhost:3000) to view it in the brow
 
 #### `live preview`
 
-This project was deployed in vercel, you can check [here]("insert-link")
+This project was deployed in netflyx, you can check [here]("https://main--lovely-pika-94ee68.netlify.app/")
 
 ## 📂 Project Structure
 
